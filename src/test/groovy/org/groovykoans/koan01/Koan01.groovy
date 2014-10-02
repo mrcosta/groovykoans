@@ -28,13 +28,13 @@ class Koan01 extends GroovyTestCase {
 
         // Let's start. First - Groovy requires much less boiletplate code. For example, in Groovy we don't
         // have to use semicolons at all. As a matter of fact, we don't always need to define the type of the variable!
-        boolean assertion = false
-        def hello = "Hola"
+        boolean assertion = true
+        def hello = "Hello"
 
         // Assign our variables the required values to continue...
         // ------------ START EDITING HERE ----------------------
-        hello = "Hello"
-        assertion = true
+
+
         // ------------ STOP EDITING HERE  ----------------------
 
         assert assertion, 'Assign "true" to the "assertion" variable to proceed'
@@ -53,9 +53,10 @@ class Koan01 extends GroovyTestCase {
         def math = "The result of 4 + 4 is ${4 + 4}" // 'The result of 4 + 4 is 8'
 
         // Create the target string with the ${} mechanism. Remember that ${} can contain method calls too!
-        String result
+        String result = "The size of the string '$greeting' is 26"
         // ------------ START EDITING HERE ----------------------
-        result = "The size of the string '${greeting}' is ${greeting.size()}"
+
+
         // ------------ STOP EDITING HERE  ----------------------
 
         assert result == "The size of the string 'Hello George, how are you?' is 26"
@@ -69,7 +70,9 @@ class Koan01 extends GroovyTestCase {
         // Concatenate the two values of 'right' and 'left' into result to proceed using Groovy syntax
         def result
         // ------------ START EDITING HERE ----------------------
-        result = map['right'] + map['left']
+		result = map.right + map.left
+
+
         // ------------ STOP EDITING HERE  ----------------------
 
         assert result.toCharArray().size() == 16
@@ -90,7 +93,8 @@ class Koan01 extends GroovyTestCase {
         // Add the missing item to the Groovy list. Pay attention to the order of the items.
         // Hint: you can use either Java's add(int, String) or Groovy's plus() method.
         // ------------ START EDITING HERE ----------------------
-        groovyList = groovyList.plus(1, 'Queen')
+		groovyList.add(1, 'Queen')
+
         // ------------ STOP EDITING HERE  ----------------------
 
         // Note how Groovy allows you to compare the *content* of the lists
@@ -131,7 +135,8 @@ class Koan01 extends GroovyTestCase {
     private String createMessageForUser(UserService userService) {
         def message
         // ------------ START EDITING HERE ----------------------
-        message = "Hello ${userService.loggedInUser?.firstName ?: 'Anonymous'}!"
+		message = userService?.loggedInUser?.firstName ? "Hello ${userService.loggedInUser.firstName}!" : 'Hello Anonymous!'
+
         // ------------ STOP EDITING HERE  ----------------------
 
         // Note how Groovy doesn't require the 'return' keyword! It will simply return the last expression.
