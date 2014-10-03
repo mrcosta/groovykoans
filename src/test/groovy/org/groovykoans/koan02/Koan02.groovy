@@ -50,7 +50,8 @@ class Koan02 extends GroovyTestCase {
         String s2 = ''
 
         // ------------ START EDITING HERE ----------------------
-
+		s1 = ''
+		s2 = 'non-empty string'
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -63,7 +64,7 @@ class Koan02 extends GroovyTestCase {
 
     void test04_NumericTruth() {
         // Similar to C code, null or zeros are false. Any other number is true.
-        def balance = [2, -3, 6, 0, 5]
+        def balance = [2, -3, 6, 2, 5]
 
         // Remove (or change) the offending integer to continue
         // ------------ START EDITING HERE ----------------------
@@ -75,9 +76,10 @@ class Koan02 extends GroovyTestCase {
         // For an easier way to do this in Groovy, check out the any() method at
         // http://groovy.codehaus.org/groovy-jdk/java/lang/Object.html#any(groovy.lang.Closure)
         def result = true
-        for (int i : balance) {
-            result = result && i.asBoolean()
-        }
+        balance.each {
+			result = result && it.asBoolean()
+		}
+
         assert result
     }
 
